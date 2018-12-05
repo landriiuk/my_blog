@@ -1,0 +1,36 @@
+<%= image_tag(@article.image_url(:large)) if @article.image? %>
+
+<h2 class="mt-3"><%= @article.title %></h2>
+<div class="lead mb-5">
+  <%= raw @article.text %>
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <%= link_to articles_path, class: 'btn btn-secondary' do %>
+   <%= fa_icon "arrow-left" %> Back
+  <% end %>
+  <%= link_to edit_article_path, class: 'btn btn-info' do %>
+    <%= fa_icon "pencil" %> Edit
+  <% end %>
+  <%= link_to @article, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+   <%= fa_icon "trash" %> Destroy
+  <% end %>
+</div>
+
+
+<hr>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-lg justify-content-center">
+    <li class="page-item">
+      <%= link_to @article.prev, class: 'page-link' do %>
+       <%= fa_icon "angle-left" %> Prev Post
+      <% end %>
+    </li>
+    <li class="page-item">
+      <%= link_to @article.next, class: 'page-link' do %>
+        Next Post <%= fa_icon "arrow-right" %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
